@@ -25,4 +25,17 @@ public class UserService {
         return createUserResponse;
     }
 
+    public Response updateUser(CreateUserRequest createUserRequest,int id) {
+        Response response = userClient.updateAUser(createUserRequest,id);
+        response.then().log().body();
+        return response;
+
+    }
+    public Response deleteUser(int id) {
+        Response response = userClient.deleteAUser(id);
+        response.then().log().body();
+        return response;
+    }
+
+
 }

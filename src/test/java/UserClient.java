@@ -22,4 +22,24 @@ public class UserClient {
 
     }
 
+    public Response updateAUser(CreateUserRequest requestBody,int id) {
+        return given()
+                .contentType(ContentType.JSON)
+                .when()
+                .body(requestBody)
+                .pathParam("id",id)
+                .put("https://reqres.in/api/users/{id}");
+
+    }
+
+    public Response deleteAUser(int id) {
+        return given()
+                .contentType(ContentType.JSON)
+                .when()
+                .pathParam("id",id)
+                .delete("https://reqres.in/api/users/{id}");
+
+    }
+
+
 }
