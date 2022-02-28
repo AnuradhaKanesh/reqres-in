@@ -17,12 +17,12 @@ public class UserService {
         return users;
     }
 
-    public User createUser(CreateUserRequest userRequest) {
+    public CreateUserResponse createUser(CreateUserRequest userRequest) {
         Response response = userClient.createAUser(userRequest);
-        users = response.as(User.class);
-        users.setStatusCode(response.getStatusCode());
+        CreateUserResponse createUserResponse = response.as(CreateUserResponse.class);
+        createUserResponse.setStatusCode(response.getStatusCode());
         response.then().log().body();
-        return users;
+        return createUserResponse;
     }
 
 }

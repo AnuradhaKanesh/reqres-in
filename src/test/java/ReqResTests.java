@@ -19,9 +19,14 @@ public class ReqResTests {
 
     @Test
     public void shouldCreateAUser() {
-
-
         CreateUserRequest createUserRequest = CreateUserRequest.builder().name("morph").job("team member").build();
+
+        CreateUserResponse response = userService.createUser(createUserRequest);
+
+        Assert.assertNotNull(response.getId());
+        Assert.assertEquals(response.getStatusCode(), 201);
+        Assert.assertEquals(response.getName(), createUserRequest.getName());
+        Assert.assertEquals(response.getJob(), createUserRequest.getJob());
 
     }
 

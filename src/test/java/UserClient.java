@@ -19,6 +19,7 @@ public class UserClient {
                 .when()
                 .body(requestBody)
                 .post("https://reqres.in/api/users");
+
     }
 
 }
